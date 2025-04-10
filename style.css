@@ -1,0 +1,212 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.terminal {
+    width: 80%;
+    max-width: 800px;
+    height: 70%;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.terminal-header {
+    background-color: #222;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.close { background-color: #ff5f56; }
+.minimize { background-color: #ffbd2e; }
+.maximize { background-color: #27c93f; }
+
+.terminal-title {
+    margin-left: 10px;
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+.terminal-input {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #333;
+}
+
+.prompt {
+    margin-right: 10px;
+    color: #0f0;
+}
+
+#command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+    outline: none;
+}
+
+.welcome-message {
+    color: #0f0;
+    margin-bottom: 10px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+/* Effet de scanlines */
+.terminal-body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        rgba(0, 255, 0, 0.1) 0.1em,
+        transparent 0.1em
+    );
+    background-size: 100% 0.2em;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Animation de texte */
+.typewriter {
+    overflow: hidden;
+    border-right: 0.15em solid #0f0;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #0f0 }
+}
+
+/* Effet de glitch */
+.glitch {
+    position: relative;
+}
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+}
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00ff;
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00ffff;
+    animation: glitch-anim 0.5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+    0% { clip: rect(32px, 9999px, 28px, 0) }
+    20% { clip: rect(13px, 9999px, 80px, 0) }
+    40% { clip: rect(45px, 9999px, 30px, 0) }
+    60% { clip: rect(22px, 9999px, 73px, 0) }
+    80% { clip: rect(55px, 9999px, 52px, 0) }
+    100% { clip: rect(11px, 9999px, 99px, 0) }
+}
+
+/* Styles pour les différents types de messages */
+.command {
+    color: #0f0;
+    font-weight: bold;
+}
+
+.response {
+    color: #aaa;
+}
+
+.system {
+    color: #ff0;
+    animation: glitch-anim 0.5s linear;
+}
+
+.error {
+    color: #f00;
+    text-shadow: 0 0 5px #f00;
+}
+
+.success {
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+}
+
+/* Animation de frappe améliorée */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #0f0 }
+}
+.typewriter {
+    overflow: hidden;
+    border-right: 0.15em solid #0f0;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+}

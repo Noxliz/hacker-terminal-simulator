@@ -1,0 +1,19 @@
+{
+  "sounds": {
+    "success": {
+      "description": "Son de succès - bip aigu",
+      "file": "success.wav",
+      "duration": 0.5
+    },
+    "error": {
+      "description": "Son d'erreur - bip grave",
+      "file": "error.wav",
+      "duration": 0.8
+    },
+    "typing": {
+      "description": "Son de frappe clavier",
+      "file": "typing.wav", 
+      "loop": true
+    }
+  }
+}
